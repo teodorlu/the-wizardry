@@ -154,6 +154,16 @@ fun {Position Xs Y}
    end
 end
 
-{Position [3 4 5 6 7] 5}
+%{Position [3 4 5 6 7] 5}
 
-%abbabbabb
+fun {Position2 Xs Y}
+   case Xs of H|T then
+      if H == Y then
+	 1
+      else
+	 1 + {Position T Y}
+      end
+   end
+end
+
+{Position2 1|2|3|nil 3}
