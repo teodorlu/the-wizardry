@@ -9,11 +9,13 @@ X = Y + Z
 
 %{Browse X}
 
+
 declare
 X Y
 X = 'dette er magisk'
 %{Browse Y}
 Y = X
+
 
 declare
 fun {Min X Y}
@@ -26,6 +28,7 @@ end
 
 %{Browse {Min 1 2}}
 
+
 declare
 fun {IsBigger Number Threshold}
    if Number > Threshold then
@@ -37,6 +40,7 @@ end
 
 %{Browse {IsBigger 3 4}}
 %{Browse {IsBigger 3 1}}
+
 
 proc {Circle R}
    A D O in
@@ -61,6 +65,7 @@ end
 
 %{Browse {SumTo 10 0}}
 
+
 fun {Max First Last}
    if First == 0 then
       Last
@@ -73,6 +78,7 @@ end
 
 %{Browse {Max 12 15}}
 
+
 fun {Length X}
    case X of H|T then
       1 + {Length T}
@@ -82,6 +88,7 @@ fun {Length X}
 end
 
 %{Browse {Length [1 nil 1]}}
+
 
 fun {Take Xs N}
    H T in
@@ -100,6 +107,7 @@ end
 
 %{Browse {Take [3 2 1 2 3 4 5] 5}}
 
+
 fun {Drop Xs N}
    if N == 0 then
       Xs
@@ -114,13 +122,6 @@ end
 
 %{Browse {Drop [1 2 3 4 5 6 7] 2}}
 
-fun {Appendcrap Xs Ys}
-   case Ys of H|T then
-      {Appendcrap H|Xs T}
-   else
-      Xs
-   end
-end
 
 fun {Append Xs Ys}
    if Xs == nil then
@@ -131,6 +132,7 @@ fun {Append Xs Ys}
 end
 
 % {Browse {Append [1 2 3] [4 5 6 74363]}}
+
 
 fun {Member Xs Y}
    if Xs == nil then
@@ -146,6 +148,7 @@ end
 
 % {Browse {Member [1 2 3 4 5 6] ~9832}}
 
+
 fun {Position Xs Y}
    if Xs.1 == Y then
       0
@@ -156,14 +159,21 @@ end
 
 %{Position [3 4 5 6 7] 5}
 
+
 fun {Position2 Xs Y}
-   case Xs of H|T then
-      if H == Y then
-	 1
+   if {Member Xs Y} == true then
+      case Xs of H|T then
+	 if H == Y then
+	    1
+	 else
+	    1 + {Position2 T Y}
+	 end
       else
-	 1 + {Position T Y}
+	 0
       end
+   else
+      ~1
    end
 end
 
-{Position2 1|2|3|nil 3}
+{Browse {Position2 [1 2 3 5 2 4 5 6 7] 9}}
