@@ -42,6 +42,13 @@ end
 
 %{Browse {Drop [1 2 3 4 5 6 7] 2}}
 
+fun {Droplast Xs N}
+   {List.reverse
+    {Drop {List.reverse Xs} N}
+   }
+end
+
+{Browse {Droplast [1 2 3 4 5 6 7] 2}}
 
 fun {Append Xs Ys}
    if Xs == nil then
