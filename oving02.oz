@@ -3,54 +3,49 @@
 
 declare
 fun {ApplyMoves S Ms}
-   local S1 in      
       case Ms of nil then
 	 [S]
       [] M|Mr then
-	 case M of trackA(N) then
+	 S1 = case M of trackA(N) then
 	    if N > 0 then
-	       S1.trackA = {Append
+	       newA = {Append
 			    {Drop S.main {Length S.main} -N}
-			    trackA}
-	       S1.trackB = S.trackB
-	       S1.main = {Droplast S.main N}
+			    S.trackA}
+	       newMain = {Droplast S.main N}
+	       state(main:newMain trackA:newA trackB:S.trackB)
 	    elseif N == 0 then
-	       skip
+	       S
 	    else
-	       S1.main = {Append
-			  main
+	       newMain = {Append
+			  S.main
 			  {Droplast S.trackA {Length S.trackA} +N}
 			 }
-	       S1.trackB = S.trackB
-	       S1.trackA = {Drop S.trackA ~N}
+	       newA = {Drop S.trackA ~N} in
+	       state(main:newMain trackA:newA trackB:S.trackB)
 	    end
 
 	 [] trackB(N) then
 	    if N > 0 then
-	       S1.trackB = {Append
+	       newB = {Append
 			    {Drop S.main {Length S.main} -N}
-			    trackB}
-	       S1.trackA = S.trackA
-	       S1.main = {Droplast S.main N}
+			    S.trackB}
+	       newMain = {Droplast S.main N} in
+	       state(main:newMain trackA:S.trackA trackB:newB)
 	    elseif N == 0 then
-	       skip
+	       S
 	    else
-	       S1.main = {Append
+	       newMain = {Append
 			  S.main
 			  {Droplast S.trackB {Length S.trackB} +N}
 			 }
-	       S1.trackA = S.trackA
-	       S1.trackB = {Drop S.trackB ~N}
+	       newB = {Drop S.trackB ~N} in
+	       state(main:newMain trackA:S.trackA trackB:newB)
 	    end
 
-	 else
-	    skip
-	 end
+	      end
+      in
 	 S1|{ApplyMoves S1 Mr}
       end
-   end
-   
-      
 end
 
 % {Visualize [state(main:[a b] trackA:nil trackB:nil) 	    state(main:[a] trackA:[b] trackB:nil) 	    state(main:nil trackA:[b] trackB:[a]) 	    state(main:[b] trackA:nil trackB:[a]) 	    state(main:[b] trackA:nil trackB:[a x]) 	   ]}
