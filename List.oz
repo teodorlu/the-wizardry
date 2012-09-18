@@ -48,7 +48,7 @@ fun {Droplast Xs N}
    }
 end
 
-{Browse {Droplast [1 2 3 4 5 6 7] 2}}
+%{Browse {Droplast [1 2 3 4 5 6 7] 2}}
 
 fun {Append Xs Ys}
    if Xs == nil then
@@ -93,4 +93,4 @@ fun {Position Xs Y}
    end
 end
 
-{Browse {Position [1 2 3 5 2 4 5 6 7] 5}}
+%{Browse {Position [1 2 3 5 2 4 5 6 7] 5}}
