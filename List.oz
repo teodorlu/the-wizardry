@@ -1,90 +1,64 @@
 declare
-fun {Length X}
-   case X of H|T then
-      1 + {Length T}
-   else
+
+fun {Length Xs}
+   case Xs of nil then
       0
+   [] _|T then
+      1+{Length T}
    end
 end
-
-%{Browse {Length [1 nil 1]}}
-
 
 fun {Take Xs N}
-   H T in
-      if {Length Xs} < N+1 then
-	 Xs
-      elseif N == 0 then
+   if N<1 then
+      nil
+   else
+      case Xs of nil then
 	 nil
-      else
-	 case Xs of H|T then
-	    H|{Take T (N-1) }
-	 else
-	    nil
-	 end
+      [] H|T then
+	 H|{Take T N-1}
       end
+   end
 end
-
-%{Browse {Take [3 2 1 2 3 4 5] 5}}
-
 
 fun {Drop Xs N}
-   if N == 0 then
+   if N<1 then
       Xs
    else
-      case Xs of H|T then
-	 {Drop T (N-1)}
-      else
+      case Xs of nil then
 	 nil
+      [] _|T then
+	 {Drop T N-1}
       end
    end
 end
-
-%{Browse {Drop [1 2 3 4 5 6 7] 2}}
-
-fun {Droplast Xs N}
-   {List.reverse
-    {Drop {List.reverse Xs} N}
-   }
-end
-
-%{Browse {Take [1 2 3 4 5 6 7] 2}}
 
 fun {Append Xs Ys}
-   if Xs == nil then
+   case Xs
+   of nil then
       Ys
-   else
-      Xs.1| {Append Xs.2 Ys}
+   [] H|T then
+      H|{Append T Ys}
    end
 end
-
-% {Browse {Append [1 2 3] [4 5 6 74363]}}
-
 
 fun {Member Xs Y}
-   if Xs == nil then
+   case Xs of nil then
       false
-   elseif Xs.1 == Y then
-      true
-   elseif {Member Xs.2 Y} then
-      true
-   else
-      false
-   end
-end
-
-% {Browse {Member [1 2 3 4 5 6] ~9832}}
-
-%error 'Missing else clause' if element not in list
-fun {Position Xs Y}
-   case Xs of H|T then
-      if H == Y then
-	 1
+   [] H|T then
+      if H==Y then
+	 true
       else
-	 1 + {Position T Y}
+	 {Member T Y}
       end
    end
 end
 
-
-%{Browse {Position [4 6 8] 6}}
+fun {Position Xs Y}
+   case Xs of H|T then
+      if H==Y then
+	 1
+      else
+	 1+{Position T Y}
+      end
+   end
+end
