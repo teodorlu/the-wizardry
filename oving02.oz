@@ -40,7 +40,7 @@ fun {ApplyMoves S Ms}
 		 end	 
 	       end
       in
-	 S1|{ApplyMoves S1 Mr}
+	 S|{ApplyMoves S1 Mr}
       end
 end
 
