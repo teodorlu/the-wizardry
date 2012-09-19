@@ -48,7 +48,7 @@ fun {Droplast Xs N}
    }
 end
 
-%{Browse {Droplast [1 2 3 4 5 6 7] 2}}
+%{Browse {Take [1 2 3 4 5 6 7] 2}}
 
 fun {Append Xs Ys}
    if Xs == nil then
@@ -75,22 +75,16 @@ end
 
 % {Browse {Member [1 2 3 4 5 6] ~9832}}
 
-
-
+%error 'Missing else clause' if element not in list
 fun {Position Xs Y}
-   if {Member Xs Y} == true then
-      case Xs of H|T then
-	 if H == Y then
-	    1
-	 else
-	    1 + {Position T Y}
-	 end
+   case Xs of H|T then
+      if H == Y then
+	 1
       else
-	 0
+	 1 + {Position T Y}
       end
-   else
-      ~1
    end
 end
 
-%{Browse {Position [1 2 3 5 2 4 5 6 7] 5}}
+
+%{Browse {Position [4 6 8] 6}}

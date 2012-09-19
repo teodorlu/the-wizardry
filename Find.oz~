@@ -1,0 +1,11 @@
+\insert 'List.oz'
+
+declare
+fun {SplitTrain Xs Y}
+   {Browse Xs}
+  % Hs = {Take Xs (pos-1)}
+  % Ts = {Drop Xs pos} in
+  % Hs#Ts
+end
+
+{SplitTrain 1 2}
