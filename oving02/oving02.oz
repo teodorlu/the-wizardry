@@ -56,4 +56,4 @@ end
 % state(main:[b] trackA:nil trackB:[a])
 % state(main:[b] trackA:nil trackB:[a x])]}
 
-{Visualize {ApplyMoves state(main:[a b c] trackA:nil trackB:nil) [trackA(1) trackB(1) trackA(~1) trackB(~1)]}}
+%{Visualize {ApplyMoves state(main:[a b c] trackA:nil trackB:nil) [trackA(1) trackB(1) trackA(~1) trackB(~1)]}}

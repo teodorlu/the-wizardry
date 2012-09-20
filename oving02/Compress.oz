@@ -45,4 +45,4 @@ end
   % end
 %end
 
-{Browse {Compress [trackB(~1) trackA(1) trackA(~1) trackB(1)]}}
+%{Browse {Compress [trackB(~1) trackA(1) trackA(~1) trackB(1)]}}
