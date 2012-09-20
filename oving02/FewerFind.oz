@@ -1,4 +1,7 @@
 \insert Find.oz
+\insert Visualizer.oz
+\insert Compress.oz
+\insert oving02.oz
 
 declare
 
@@ -24,4 +27,4 @@ fun {FewerFind Ms As Bs Ys}
    end
 end
 
-{FewerFind [a b] nil nil [b a]}
+{Visualize {ApplyMoves state(main:[a b] trackA:nil trackB:nil) {Compress {FewerFind [a b] nil nil [b a]}}}}
