@@ -17,9 +17,8 @@ fun {Find Xs Ys}
       Hs#Ts = {SplitTrain Xs Y}
       trackA({Length Ts} + 1) | trackB({Length Hs}) |
       trackA(~({Length Ts} + 1)) | trackB(~{Length Hs}) |
-      %Leaving the correctly placed carts out of the equation
       {Find {Append Hs Ts} Yr}
    end
 end
 
-{Browse {Find [a b] [b a]}}
+%{Browse {Find [a b] [b a]}}
