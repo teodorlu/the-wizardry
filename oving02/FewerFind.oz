@@ -27,4 +27,4 @@ fun {FewerFind Ms As Bs Ys}
    end
 end
 
-{Visualize {ApplyMoves state(main:[a b] trackA:nil trackB:nil) {Compress {FewerFind [a b] nil nil [b a]}}}}
+{Visualize {ApplyMoves state(main:[a b c d] trackA:nil trackB:nil) {Compress {FewerFind [a b c d] nil nil [c a d b]}}}}
