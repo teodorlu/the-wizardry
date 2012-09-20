@@ -7,35 +7,35 @@ fun {ApplyMoves S Ms}
       [] M|Mr then
 	 S1 = case M of trackA(N) then
 		 if N>0 then
-		    NewO = {Append
+		    NewA = {Append
 		       {Drop S.main {Length S.main} - N}
 		       S.trackA}
 		    NewM = {Droplast S.main N} in
-		    state(main:NewM trackA:NewO trackB:S.trackB)
+		    state(main:NewM trackA:NewA trackB:S.trackB)
 		 elseif N == 0 then
 		    S
 		 else
 		    NewM = {Append
 			  S.main
 			  {Droplast S.trackA ({Length S.trackA} + N)}}
-		    NewO = {Drop S.trackA ~N} in
-		    state(main:NewM trackA:NewO trackB:S.trackB)
+		    NewA = {Drop S.trackA ~N} in
+		    state(main:NewM trackA:NewA trackB:S.trackB)
 		 end
 	      [] trackB(N) then
 		 if N > 0 then
-		    NewT = {Append
+		    NewB = {Append
 			    {Drop S.main ({Length S.main} - N)}
 			    S.trackB}
 		    NewM = {Droplast S.main N} in
-		    state(main:NewM trackA:S.trackA trackB:NewT)
+		    state(main:NewM trackA:S.trackA trackB:NewB)
 		 elseif N == 0 then
 		    S
 		 else
 		    NewM = {Append
 			  S.main
 			  {Droplast S.trackB ({Length S.trackB} + N)}}
-		    NewT = {Drop S.trackB ~N} in
-		    state(main:NewM trackA:S.trackA trackB:NewT)
+		    NewB = {Drop S.trackB ~N} in
+		    state(main:NewM trackA:S.trackA trackB:NewB)
 
 		 end	 
 	       end
@@ -56,4 +56,4 @@ end
 % state(main:[b] trackA:nil trackB:[a])
 % state(main:[b] trackA:nil trackB:[a x])]}
 
-{Visualize {ApplyMoves state(main:[a b c] trackA:nil trackB:nil) [trackA(1) trackB(1)]}}
+{Visualize {ApplyMoves state(main:[a b c] trackA:nil trackB:nil) [trackA(1) trackB(1) trackA(~1) trackB(~1)]}}
