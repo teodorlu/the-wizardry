@@ -1,4 +1,4 @@
-\insert 'ListOurVersion.oz'
+\insert List.oz
 \insert Visualizer.oz
 
 declare
