@@ -19,7 +19,7 @@ fun {FewerFind Ms As Bs Ys}
 	 Hs#Ts = {SplitTrain Bs Y}
 	 trackB(~{Length Hs}) | trackA({Length Hs}) | trackB(~1) | {FewerFind nil {Append Hs As} Ts Yr}
       else
-	 nil
+	 raise something_is_wrong end
       end
    end
 end
