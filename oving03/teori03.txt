@@ -10,6 +10,13 @@ d)	Fri: X, P, Q, Y i else {Q Y}
 	Bundet: Y i f(Y), {P Y}
 
 Oppgave 2
+a) Q
+b) P
+c) Q Z U
+d) Q U
+e) Q
+
+Oppgave 3
 
 Oppgave 4
 
