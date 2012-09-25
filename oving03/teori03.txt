@@ -1,0 +1,38 @@
+Oppgave 1
+a)	Fri: P, Y
+	Bundet: X
+b)	Fri: Z
+	Bundet: X, Y
+	(Denne snutten vil ikke kunne gjøre noe som helst, da den venter på at X skal bli en prosedyre, som den ikke blir)
+c)	Fri: P Q, Z
+	Bundet: X, Y
+d)	Fri: X, P, Q, Y i else {Q Y}
+	Bundet: Y i f(Y), {P Y}
+
+Oppgave 2
+
+Oppgave 4
+
+Oppgave 5
+
+Oppgave 6
+a) Ikke OK - 2 er ikke unifiserbar med 3
+b) OK
+	X = a
+	Y = a
+	Z = a
+c) OK
+	Y ubundet
+	X = 3|4|Y|nil
+	D = 1|2|3|4|Y|nil
+d) prøver å unifisere rekursivt:
+	Y = 2
+	X = nil
+	nil = Y
+   Ikke OK - 2 er ikke unifisebar med nil
+e) prøver å unifisere rekursivt:
+	1|2|Y = 1|2|3|4|Y
+	Y = 3|4|Y
+	... som gir en rekursiv formel for Y.
+	Y = [3 4 3 4 3 4 3 4 3 4 3 4 3 4 3 4 3 4 3 4 ...
+	X = [1 2 3 4 3 4 3 4 3 4 3 4 3 4 3 4 3 4 3 4 3 4 ...
