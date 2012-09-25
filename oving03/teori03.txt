@@ -1,4 +1,13 @@
 Oppgave 1
+a)	Fri: P, Y
+	Bundet: X
+b)	Fri: Z
+	Bundet: X, Y
+	(Denne snutten vil ikke kunne gjøre noe som helst, da den venter på at X skal bli en prosedyre, som den ikke blir)
+c)	Fri: P Q, Z
+	Bundet: X, Y
+d)	Fri: X, P, Q, Y i else {Q Y}
+	Bundet: Y i f(Y), {P Y}
 
 Oppgave 2
 
