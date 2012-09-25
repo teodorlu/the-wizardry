@@ -1,0 +1,29 @@
+Oppgave 1
+
+Oppgave 2
+
+Oppgave 4
+
+Oppgave 5
+
+Oppgave 6
+a) Ikke OK - 2 er ikke unifiserbar med 3
+b) OK
+	X = a
+	Y = a
+	Z = a
+c) OK
+	Y ubundet
+	X = 3|4|Y|nil
+	D = 1|2|3|4|Y|nil
+d) prøver å unifisere rekursivt:
+	Y = 2
+	X = nil
+	nil = Y
+   Ikke OK - 2 er ikke unifisebar med nil
+e) prøver å unifisere rekursivt:
+	1|2|Y = 1|2|3|4|Y
+	Y = 3|4|Y
+	... som gir en rekursiv formel for Y.
+	Y = [3 4 3 4 3 4 3 4 3 4 3 4 3 4 3 4 3 4 3 4 ...
+	X = [1 2 3 4 3 4 3 4 3 4 3 4 3 4 3 4 3 4 3 4 3 4 ...
