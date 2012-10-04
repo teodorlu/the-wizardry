@@ -8,8 +8,12 @@ fun lazy {StreamMap S F}
    end
 end
 
-fun {StreamZip S1 S2 F}
-   skip
+fun lazy {StreamZip S1 S2 F}
+   case S1#S2 of H1|T1#H2|T2 then
+      {F H1 H2}|{StreamZip T1 T2}
+   else
+      nil
+   end
 end
 
 fun {StreamScale SF Factor}
