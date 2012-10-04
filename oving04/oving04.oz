@@ -3,6 +3,10 @@ fun lazy {RepeatInf F}
    F|{RepeatInf F}
 end
 
+fun lazy {IncreasingSeq F}
+   F|{IncreasingSeq F+1.0}
+end
+
 fun {Nth S N}
    if N == 0 then
       nil
@@ -73,7 +77,7 @@ end
 
 local S1 S2 Res in
    S1 = {RepeatInf 9.0}
-   S2 = {RepeatInf 5.0}
+   S2 = {IncreasingSeq 5.0}
    Res = {StreamAdd S1 S2}
    {Browse {Nth Res 4}}
 end
