@@ -75,9 +75,9 @@ fun {MakeRC R C Dt}
    nil
 end
 
-local S1 S2 Res in
-   S1 = {RepeatInf 9.0}
-   S2 = {IncreasingSeq 5.0}
-   Res = {StreamAdd S1 S2}
-   {Browse {Nth Res 4}}
+local S1 Dt Res in
+   S1 = {IncreasingSeq 5.0}
+   Dt = 3.0
+   Res = {StreamIntegrate S1 2.0 Dt}
+   {Browse {Nth Res 10}}
 end
