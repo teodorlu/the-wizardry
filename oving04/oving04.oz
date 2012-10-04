@@ -83,16 +83,18 @@ fun {MakeRC R C Dt}
    end
 end
 
-% local S1 Dt Res in
-%    S1 = {IncreasingSeq 5.0}
-%    Dt = 3.0
-%    Res = {StreamIntegrate S1 2.0 Dt}
-%    {Browse {Nth Res 10}}
-% end
+local S1 Dt Res in
+   S1 = {IncreasingSeq 5.0}
+   Dt = 3.0
+   Res = {StreamIntegrate S1 2.0 Dt}
+   {Browse {Nth Res 10}}
+   {Browse Res}
+end
 
-declare
-fun lazy {MakeOnes} 1.0 | {MakeOnes} end
-RC = {MakeRC 5.0 1.0 0.2}
-Vs = {RC {MakeOnes} 2.0}
-{Nth Vs 5 _}
-{Browse Vs}
+% declare
+% fun lazy {MakeOnes} 1.0 | {MakeOnes} end
+% RC = {MakeRC 5.0 1.0 0.2}
+% Vs = {RC {MakeOnes} 2.0}
+% {Nth Vs 5 _}
+% {Browse Vs}
+

@@ -3,6 +3,15 @@ Oppgave 1
 
 a)
 	Nth nøster seg innover i strukturen til den har kommet langt nok inn (ved å sende videre en iterator som synker), og returnerer elementet som ligger først i den resterende lista når iteratoren har kommet til 1 (gitt 1-indeksering).
+	
+	Når Nth skal returnere det N-te elementet i en strøm, tvinger det samtidig strømmen til å generere de N første elementene, som vi kan se ved å kalle
+		local S in
+			fun lazy {MakeOnes} 1.0 | {MakeOnes} end
+			S = {MakeOnes}
+			{Nth S 3}
+			{Browse S}
+		end
+	... som vil vise 1|1|1|_
 b)
 	En liste er en fysisk representasjon av elementene i minnet.
 	En strøm er en oppskrift på å generere elementer
