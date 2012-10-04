@@ -1,7 +1,11 @@
 declare
 
-fun {StreamMap S F}
-   skip
+fun lazy {StreamMap S F}
+   case S of H|T then
+      {F H}|{StreamMap T F}
+   else
+      nil
+   end
 end
 
 fun lazy {StreamZip S1 S2 F}
