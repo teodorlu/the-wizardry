@@ -35,8 +35,12 @@ fun {StreamAdd SF1 SF2}
    skip
 end
 
-fun {StreamIntegrate SF InitValue Dt}
-   skip
+fun lazy {StreamIntegrate SF InitValue Dt}
+   case SF of H|T then
+      InitValue | {StreamIntegrate T (InitValue + H * Dt) Dt}
+   else
+      nil
+   end
 end
 
 fun {MakeRC R C Dt}
