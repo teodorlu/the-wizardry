@@ -76,16 +76,23 @@ fun {MakeRC R C Dt}
       local Top Bot in
 	 Top = {StreamScale SF R}
 	 Bot = {StreamIntegrate 
-		{StreamScale S 1.0/C} V0 Dt
+		{StreamScale SF 1.0/C} V0 Dt
 	       }
 	 {StreamAdd Top Bot}
       end
    end
 end
 
-local S1 Dt Res in
-   S1 = {IncreasingSeq 5.0}
-   Dt = 3.0
-   Res = {StreamIntegrate S1 2.0 Dt}
-   {Browse {Nth Res 10}}
-end
+% local S1 Dt Res in
+%    S1 = {IncreasingSeq 5.0}
+%    Dt = 3.0
+%    Res = {StreamIntegrate S1 2.0 Dt}
+%    {Browse {Nth Res 10}}
+% end
+
+declare
+fun lazy {MakeOnes} 1.0 | {MakeOnes} end
+RC = {MakeRC 5.0 1.0 0.2}
+Vs = {RC {MakeOnes} 2.0}
+{Nth Vs 5 _}
+{Browse Vs}
