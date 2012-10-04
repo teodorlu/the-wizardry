@@ -15,8 +15,6 @@ fun {Nth S N}
    end
 end
 
-{Browse {Nth {RepeatInf 9.0} 4}}
-
 fun lazy {StreamMap S F}
    case S of H|T then
       {F H}|{StreamMap T F}
@@ -26,8 +24,20 @@ fun lazy {StreamMap S F}
 end
 
 fun lazy {StreamZip S1 S2 F}
+   case S1 of H1|T1 then
+      case S2 of H2|T2 then
+	 {F H1 H2}|{StreamZip T1 T2 F}
+      else
+	 nil
+      end
+   else
+      nil
+   end
+end
+
+fun lazy {BrokenStreamZip S1 S2 F}
    case S1#S2 of H1|T1#H2|T2 then
-      {F H1 H2}|{StreamZip T1 T2 F}
+      {F H1 H2}|{BrokenStreamZip T1 T2 F}
    else
       nil
    end
@@ -39,13 +49,6 @@ fun lazy {StreamScale SF Factor}
    else
       nil
    end
-
-   %alternativt (?)
-   %case SF of H|T then
-   %   {StreamMap H {$ H Factor} H * Factor end} | {StreamScale T Factor}
-   %else
-   %   nil
-   %end
 end
 
 fun {Add F1 F2}
@@ -66,4 +69,11 @@ end
 
 fun {MakeRC R C Dt}
    nil
+end
+
+local S1 S2 Res in
+   S1 = {RepeatInf 9.0}
+   S2 = {RepeatInf 5.0}
+   Res = {StreamAdd S1 S2}
+   {Browse {Nth Res 4}}
 end
