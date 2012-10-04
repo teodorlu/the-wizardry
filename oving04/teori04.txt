@@ -16,4 +16,5 @@ b)
 	En liste er en fysisk representasjon av elementene i minnet.
 	En strøm er en oppskrift på å generere elementer
 c)
+	Ved bruk av ikke-late funskjoner, kan unntak kastes når en feil oppstår. Med late funksjoner, vil ikke verdiene evalueres før de forespørres, før de trengs et annet sted. Da vil kan ikke funksjonskallet som genererte feilen kaste et unntak - det er det funksjonen som forespør verdien som må gjøre.
 	
