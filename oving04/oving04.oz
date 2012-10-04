@@ -1,4 +1,21 @@
 declare
+fun lazy {RepeatInf F}
+   F|{RepeatInf F}
+end
+
+fun {Nth S N}
+   if N == 0 then
+      nil
+   else
+      case S of H|T then
+	 H|{Nth T N-1}
+      else
+	 nil
+      end
+   end
+end
+
+{Browse {Nth {RepeatInf 9.0} 4}}
 
 fun lazy {StreamMap S F}
    case S of H|T then
@@ -10,7 +27,7 @@ end
 
 fun lazy {StreamZip S1 S2 F}
    case S1#S2 of H1|T1#H2|T2 then
-      {F H1 H2}|{StreamZip T1 T2}
+      {F H1 H2}|{StreamZip T1 T2 F}
    else
       nil
    end
@@ -48,5 +65,5 @@ fun lazy {StreamIntegrate SF InitValue Dt}
 end
 
 fun {MakeRC R C Dt}
-   skip
+   nil
 end
