@@ -18,3 +18,4 @@ b)
 c)
 	Ved bruk av ikke-late funskjoner, kan unntak kastes når en feil oppstår. Med late funksjoner, vil ikke verdiene evalueres før de forespørres, før de trengs et annet sted. Da vil kan ikke funksjonskallet som genererte feilen kaste et unntak - det er det funksjonen som forespør verdien som må gjøre.
 	
+	La resultatet av kodesnutten være F. Fordi vi har gjort flere funksjonskall som bruker F, må F være en verdi. Men der vi egentlig skulle funnet F, skjedde det i stedet en feil, og hva er da F? Oz løser dette ved å sette F til FailedValue, som betyr at utregningen av F ga en feil.
