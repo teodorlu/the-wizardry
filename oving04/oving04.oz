@@ -72,7 +72,15 @@ fun lazy {StreamIntegrate SF InitValue Dt}
 end
 
 fun {MakeRC R C Dt}
-   nil
+   fun {$ SF V0}
+      local Top Bot in
+	 Top = {StreamScale SF R}
+	 Bot = {StreamIntegrate 
+		{StreamScale S 1.0/C} V0 Dt
+	       }
+	 {StreamAdd Top Bot}
+      end
+   end
 end
 
 local S1 Dt Res in
