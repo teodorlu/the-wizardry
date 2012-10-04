@@ -31,8 +31,12 @@ fun lazy {StreamScale SF Factor}
    %end
 end
 
-fun {StreamAdd SF1 SF2}
-   skip
+fun {Add F1 F2}
+   F1+F2
+end
+
+fun lazy{StreamAdd SF1 SF2}
+   {StreamZip SF1 SF2 Add}
 end
 
 fun lazy {StreamIntegrate SF InitValue Dt}
