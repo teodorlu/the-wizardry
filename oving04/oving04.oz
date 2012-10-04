@@ -12,8 +12,19 @@ fun lazy {StreamZip S1 S2 F}
    end
 end
 
-fun {StreamScale SF Factor}
-   skip
+fun lazy {StreamScale SF Factor}
+   case SF of H|T then
+      (H * Factor) | {StreamScale T Factor}
+   else
+      nil
+   end
+
+   %alternativt (?)
+   %case SF of H|T then
+   %   {StreamMap H {$ H Factor} H * Factor end} | {StreamScale T Factor}
+   %else
+   %   nil
+   %end
 end
 
 fun {StreamAdd SF1 SF2}
