@@ -1,0 +1,16 @@
+Oppgave 5:
+Denne grammatikken beskriver Reverse Polish Notation (postfiks notasjon)!
+
+Oppgave 3:
+a) 
+	Vi har to like men distinkte måter å representere grammatikken i BNF på - ventre- og høyre-rekursivt:
+	Venstre-rekursiv:
+		<number> ::= <number> <digit> | <digit>
+		<digit> ::= 0|1
+	
+	Høyre-rekursiv:
+		<number> ::= <digit> <number> | <digit>
+		<digit> ::= 0|1
+	
+b)
+	Hvis disse grammatikkene skal brukes som basis for en automatisk analyse av strenger, vil den _-rekursive grammatikken ...
