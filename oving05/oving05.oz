@@ -19,14 +19,12 @@ fun {Evaluate Exp}
 end
 
 fun {DivByZeroCheck Exp}
-   R in
    try
       {Evaluate Exp}
+      false
    catch divby(0) then
-      R = true
+      true
    end
-   R = false
-   R
 end
 
 
