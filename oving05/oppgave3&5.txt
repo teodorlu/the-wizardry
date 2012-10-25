@@ -5,10 +5,11 @@ Oppgave 3:
 a) 
 	Vi har to like men distinkte måter å representere grammatikken i BNF på - ventre- og høyre-rekursivt:
 	Venstre-rekursiv:
-		<number> ::= <number> <digit> | <digit>
+		<number> ::= <number> <digit> | 1
 		<digit> ::= 0|1
 	
 	Høyre-rekursiv:
+		<S> ::= 1 <number> | 1
 		<number> ::= <digit> <number> | <digit>
 		<digit> ::= 0|1
 	

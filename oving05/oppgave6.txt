@@ -1,0 +1,6 @@
+Oppgave 6:
+<S> ::= select { <column> , } <column> from <table> where <condition> = <value>
+<table> ::= telephonebook | customers | employees | vacation
+<column> ::= number | firstname | lastname | employeename | vacationdays | city | customerid| employeeid
+<condition> ::= <column>
+<value> ::= 'Trondheim' | 10 | 8453
