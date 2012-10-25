@@ -20,7 +20,7 @@ end
 
 fun {DivByZeroCheck Exp}
    try
-      {Evaluate Exp}
+      {Evaluate Exp _}
       false
    catch divby(0) then
       true
@@ -28,6 +28,6 @@ fun {DivByZeroCheck Exp}
 end
 
 
-Exp = plus(minus(int(1) int(2)) times(int(3) divide(int(4) int(5))))
-{Browse {Evaluate Exp}}
+Exp = plus(minus(int(1) int(2)) times(int(3) divide(int(4) int(0))))
+{Browse {DivByZeroCheck Exp}}
 %{Browse {Int.'div' 4 0}}
