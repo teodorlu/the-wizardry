@@ -1,0 +1,81 @@
+a)	local B in
+		if B then skip else skip end
+	end
+
+1. ([(local B in if B then skip else skip end end, Ø)], Ø)
+
+2. ([(if B then skip else skip end, {B -> b})], {b})
+
+Her vil programmet stå og vente på at B skal få en verdi fra en annen tråd.
+
+
+b) 	local B in
+		B = false
+		if B then skip else skip end
+	end
+
+1. ([(local B in B = false if B then skip else skip end end, Ø)], Ø)
+
+2. ([(B = false if B then skip else skip end, {B -> b})], {b})
+
+3. ([(B = false, {B -> b})], [(if B then skip end, {B -> b})], {b})
+
+4. ([(if B then skip else skip end, {B -> b})], {b = false})
+
+5. ([(skip, {B -> b})], {b = false})
+
+6. ([], {b = false})
+
+
+c) 	local X Z A B P in
+		proc {P X Y}
+			Y = X + Z
+		end
+		Z = 7
+		X = 4
+		{P X A}
+		{P A B}
+	end
+	
+	Kjører regelen fra oppgave 4
+1. ([(local X Z A B P in
+		proc {P X Y} Y = X + Z end
+		Z = 7
+		X = 4
+		{P X A}
+		{P A B}
+	end, Ø)], Ø)
+	
+	Splitter i to setninger
+2. ([(proc {P X Y} Y = X + Z end, {X -> x, Z -> z, A -> a, B -> b, P -> p})],
+	[(Z = 7
+	X = 4
+	{P X A}
+	{P A B}, {X -> x, Z -> z, A -> a, B -> b, P -> p})], {x, z, a, b, p})
+	
+	Binder prosedyren til P
+3. ([(Z = 7
+	X = 4
+	{P X A}
+	{P A B}, {X -> x, Z -> z, A -> a, B -> b, P -> p})], {x, z, a, b, p = (proc {$ X Y} Y = X + Z end}))
+	
+	Setter z = 7
+4. ([(X = 4
+	{P X A}
+	{P A B}, {X -> x, Z -> z, A -> a, B -> b, P -> p})], {x, z = 7, a, b, p = (proc {$ X Y} Y = X + Z end}))
+	
+	Setter x = 4
+5. ([({P X A} {P A B},
+	{X -> x, Z -> z, A -> a, B -> b, P -> p})], {x = 4, z = 7, a, b, p = (proc {$ X Y} Y = X + Z end}))
+	
+	Splitter i to setninger
+6. ([({P X A}, {X -> x, Z -> z, A -> a, B -> b, P -> p})]
+	[({P A B}, {X -> x, Z -> z, A -> a, B -> b, P -> p})], 
+	{x = 4, z = 7, a, b, p = (proc {$ X Y} Y = X + Z end}))
+	
+	Setter A som returverdi av prosedyrekallet
+7. ([({P A B}, {X -> x, Z -> z, A -> a, B -> b, P -> p})], 
+	{x = 4, z = 7, a = 11, b, p = (proc {$ X Y} Y = X + Z end}))
+	
+	Setter B som returverdi av prosedyrekallet
+8. ([], {x = 4, z = 7, a = 11, b = 18, p = (proc {$ X Y} Y = X + Z end}))
