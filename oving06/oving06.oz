@@ -1,1 +1,1 @@
-% Kommentar
+% Kommentarer
