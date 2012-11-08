@@ -19,8 +19,8 @@ fun {NewDatingService}
 	     NewState.men = Person|OldState.men
 	     NewState.women = OldState.women
 	  [] female then
-	     NewState.men = OldState.men
-	     NewState.women = Person|OldState.women
+	     NewState = state(women:Person|OldState.women  men:OldState.men)
+	     {Browse NewState}
 	  end
        end
        {CheckForMatches OldState Person}
