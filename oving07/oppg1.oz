@@ -1,3 +1,5 @@
+\insert npo.oz
+
 declare
 
 fun {MathAgent}
@@ -17,11 +19,6 @@ fun {MathAgent}
     end}
 end
 
-fun {NewPortObject Init Fun}
-Sin Sout in
-   thread {FoldL Sin Fun Init Sout} end
-   {NewPort Sin}
-end
 
 MathPObj = {MathAgent}
 {Send MathPObj add(3)}

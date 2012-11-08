@@ -1,17 +1,15 @@
 \insert npo.oz
 
-
 % Messages sent to the Dating Service
 %   seeking(MySex MyDescription OtherSex OtherDescription ResponsePort)
 % Messages sent by the Dating service on ResponsePort
 %   list(CompatiblePeople)
 %   match(CompatiblePerson)
 
-% The port object factory
 declare
+
 fun {NewDatingService}
-   {NewPortObject
-    state(women:nil men:nil)
+   {NewPortObject state(women:nil men:nil)
     fun {$ OldState Person}
        NewState in
        case Person of seeking(Sex Description OtherSex OtherDescription ResponsePort) then
