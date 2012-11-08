@@ -2,17 +2,17 @@ declare
 
 fun {MathAgent}
    {NewPortObject 0
-    fun {$ X Y}
-       case Y of add(Number) then
-	  X + Number
+    fun {$ OldValue Reckord}
+       case Reckord of add(Number) then
+	  OldValue + Number
        [] sub(Number) then
-	  X-Number
+	  OldValue - Number
        [] mult(Number) then
-	  X * Number
+	  OldValue * Number
        [] divide(Number) then
-	  X / Number
+	  OldValue / Number
        [] get(Number) then
-	  Number=X
+	  Number = OldValue
        end
     end}
 end
