@@ -1,12 +1,8 @@
 declare
 
-declare
-
 fun {MathAgent}
-       
    {NewPortObject 0
     fun {$ X Y}
-       
        case Y of add(Number) then
 	  X + Number
        [] sub(Number) then
@@ -18,10 +14,14 @@ fun {MathAgent}
        [] get(Number) then
 	  Number=X
        end
-    end
-   }
+    end}
 end
 
+fun {NewPortObject Init Fun}
+Sin Sout in
+   thread {FoldL Sin Fun Init Sout} end
+   {NewPort Sin}
+end
 
 MathPObj = {MathAgent}
 {Send MathPObj add(3)}
