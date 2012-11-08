@@ -1,8 +1,20 @@
+\insert npo.oz
 declare
 
 proc {ServerProc Msg}
    {Browse servergot(Msg)}
    % fill in server functionality
+   case Msg of  add(X1 X2 Y) then
+      Y = X1 + X2
+   [] sub(X1 X2 Y) then
+      Y = X1 - X2
+   [] mult(X1 X2 Y) then
+      Y = X1 * X2
+   [] divide(X1 X2 Y) then
+      Y = X1 / X2
+   
+   end
+   
 end
 
 Server = {NewPortObject2 ServerProc}
