@@ -6,6 +6,6 @@ b) Forskjellige måter å implementere callback for en RMI-funksjon:
 
 
 Oppgave 6:
-a) Interleaving betyr at beregninger i forskjellige tråder (på samme data!) ikke kjører sekviensielt, men om hverandre. Det vil si f.eks. (A, B, A, B) som i interleaving vs. (A, A, B, B) som i sekvensielt.
+a) Interleaving betyr at beregninger i forskjellige tråder ikke kjører sekviensielt, men om hverandre. Det vil si f.eks. (A, B, A, B) som i interleaving vs. (A, A, B, B) som i sekvensielt.
 
-b) I Oz finnes det en scheduler som plukker en av trådene som er klar (runnable) og lar den kjøre en stund før den velger en ny tråd. Hvilken tråd som blir valgt og hvor lenge den får kjøre kan påvirkes av trådens prioritet (low, medium eller high)
+b) I Oz finnes det en scheduler som plukker en av trådene som er klar (runnable) og lar den kjøre en stund før den velger en ny tråd. Hvilken tråd som blir valgt og hvor lenge den får kjøre kan påvirkes av trådens prioritet (low, medium eller high).
