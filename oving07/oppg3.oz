@@ -11,7 +11,7 @@ proc {ServerProc Msg}
    [] mult(X1 X2 Y) then
       Y = X1 * X2
    [] divide(X1 X2 Y) then
-      Y = X1 / X2
+      Y = {Int.'div' X1 X2}
    
    end
    
