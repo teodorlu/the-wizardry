@@ -1,7 +1,11 @@
 Oppgave 4:
-a) 
-b) 
+a) Fordelen med callback i en RMI-funksjon er at serveren kan kommunisere med klienten hver gang klienten gjør et RMI-kall. Slik kan klient og server jobbe mer parallellt ved at klienten kan sende noe data til serveren og fortsette å jobbe videre MENS serveren jobber på dataene fra klienten.
+
+b) Forskjellige måter å implementere callback for en RMI-funksjon:
+	- Ved å splitte klienten i to tråder unngår man å låse tråden fordi man venter på svar fra serveren. Dermed kan den ene tråden fortsette å ta i mot kommandoer mens den andre fortsetter som før.
+
 
 Oppgave 6:
-a) 
-b) 
+a) Interleaving betyr at beregninger i forskjellige tråder (på samme data!) ikke kjører sekviensielt, men om hverandre. Det vil si f.eks. (A, B, A, B) som i interleaving vs. (A, A, B, B) som i sekvensielt.
+
+b) I Oz finnes det en scheduler som plukker en av trådene som er klar (runnable) og lar den kjøre en stund før den velger en ny tråd. Hvilken tråd som blir valgt og hvor lenge den får kjøre kan påvirkes av trådens prioritet (low, medium eller high)
