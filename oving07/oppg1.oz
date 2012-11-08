@@ -1,8 +1,27 @@
 declare
 
+declare
+
 fun {MathAgent}
-   % code
+       
+   {NewPortObject 0
+    fun {$ X Y}
+       
+       case Y of add(Number) then
+	  X + Number
+       [] sub(Number) then
+	  X-Number
+       [] mult(Number) then
+	  X * Number
+       [] divide(Number) then
+	  X / Number
+       [] get(Number) then
+	  Number=X
+       end
+    end
+   }
 end
+
 
 MathPObj = {MathAgent}
 {Send MathPObj add(3)}
