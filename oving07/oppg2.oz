@@ -41,21 +41,22 @@ end
 % Returns list of people matching Person
 fun {Match People Person}
    case People of H|Rest then
-      if {ApprovesOf H Person} && {ApprovesOf Person H} then
+      if ({ApprovesOf H Person} andthen {ApprovesOf Person H}) then
 	 % Response to H
 	 {Send H.5 match(Person.1 Person.2 Person.3 Person.4 Person.5)}
 
 	 % Match rest
-	 H|{Match Rest Person}
+	 H | {Match Rest Person}
+      else
+	 {Match Rest Person}
       end
-      {Match Rest Person}
    else
       nil
    end   
 end
 
 fun {ApprovesOf A B}
-   ((A.3 == B.1) && (A.4 == B.2))
+   ((A.3 == B.1) andthen (A.4 == B.2))
 end
 
 DatingService = {NewDatingService}
