@@ -16,11 +16,9 @@ fun {NewDatingService}
        NewState in
        case Person of seeking(Sex Description OtherSex OtherDescription ResponsePort) then
 	  case Sex of male then
-	     NewState.men = Person|OldState.men
-	     NewState.women = OldState.women
+	     NewState = state(women:OldState.women men:Person|OldState.men)
 	  [] female then
-	     NewState = state(women:Person|OldState.women  men:OldState.men)
-	     {Browse NewState}
+	     NewState = state(women:Person|OldState.women men:OldState.men)
 	  end
        end
        {CheckForMatches OldState Person}
@@ -30,12 +28,15 @@ fun {NewDatingService}
 end
 
 proc {CheckForMatches State Person}
-   {Send Person.5
-    {List.append
-     {Match State.men Person}
-     {Match State.women Person}
-    }
-   }
+   Candidates = {List.append
+		 {Match State.men Person}
+		 {Match State.women Person}
+		} in
+   case Candidates of nil then
+      skip
+   else
+      {Send Person.5 Candidates}
+   end
 end
 
 % Returns list of people matching Person
