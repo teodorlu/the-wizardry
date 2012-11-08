@@ -1,0 +1,20 @@
+Oppgave 1
+a) 	<S> ::= <Exp> | e
+	<Exp> ::= '(' <Exp> <Operator> <Exp> ')' | <Int>
+	<Nonzero_digit> ::= 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9
+	<Digit> = 0 | <Nonzero_digit>
+	<Int> = <Nonzero_digit> { <Digit> } | 0
+	<Operator> ::= '+' | '-' | '*' | '/'
+
+b)
+	Vi får en tvetydig grammatikk! Et eksempel er at 1 - 2 - 3 kan tolkes som enten (1 - 2) - 3 eller 1 - (2 - 3), som gir forskjellige svar (hhv. -4 eller 2). Dette kan løses ved at vi sier at grammatikken skal være venstre-assosiativ. Et annet eksampel som kan gi tvetydige svar er 1 + 2 * 3 (kan enten gi 9 eller 7). Dette løses ved å gi mulitplikasjon og divisjon høyere presedens (dvs. at disse utføres først).
+
+	<S> ::= <Add_exp> | e
+	<Add_exp> ::= <Add_exp> <Add_op> <Times_exp> | <Times_exp>
+	<Times_exp> :: <Times_exp> <Times_op> <Int> | <Int>
+	<Nonzero_digit> ::= 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9
+	<Digit> = 0 | <Nonzero_digit>
+	<Int> = <Nonzero_digit> { <Digit> } | 0
+	<Add_op> ::= '+' | '-'
+	<Times_op> ::= '*' | '/'
+	
