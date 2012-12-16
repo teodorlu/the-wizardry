@@ -57,4 +57,54 @@ in
    {SolveAll fun {$} {SumFromRel List Sum} end }
 end
 
-{Browse {SumList [1 2 3 4 5] 5}}
+%{Browse {SumList [1 2 3 4 5] 5}}
+
+fun {SumListProper List Sum}
+   fun {SR List Sum}
+      X Y Rest
+   in
+      X = {Pick2 List Rest}
+      Y = {Pick2 Rest _}
+      X + Y = Sum
+      X#Y
+   end
+in
+   {SolveAll fun {$} {SR List Sum} end}
+end
+
+{Browse {SumListProper [1 2 3 4 5] 5}}
+{Browse {SumListProper [1 2 3 4 5] 6}}
+{Browse {SumListProper [1 2 3 4 5] 7}}
+
+fun {Pick List Rest}
+   case List of H|T then
+      choice
+	 Rest = T
+	 H
+      []
+	 RestTail Value
+      in
+	 Value = {Pick T RestTail}
+	 Rest = H|RestTail
+	 Value
+      end
+   else
+      fail
+   end
+end
+
+fun {Pick2 List Rest}
+   case List of [H] then
+      Rest = nil
+      H
+   [] H|T then
+      choice
+	 Rest = T H
+      []
+	 Rest1
+      in
+	 Rest = H|Rest1
+	 {Pick2 T Rest1}
+      end
+   end
+end
